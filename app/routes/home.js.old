@@ -1,0 +1,10 @@
+// app/routes/home.js
+
+// Com express-load, linha a seguir não é mais necessária
+// var controller = require( '../controllers/home')();
+
+module.exports = function( app ) {
+	var controller = app.controllers.home;
+
+	app.get( '/', controller.index );
+}

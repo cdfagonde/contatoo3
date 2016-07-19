@@ -1,0 +1,44 @@
+<!-- public/partials/contatos.html -->
+
+<div class="jumbotron" style="padding-top:4px">
+	<h1 class="text-center" > Contatoo2 </h1>
+</div>
+<p ng-show="mensagem.texto" > {{mensagem.erro}} </p>
+<p style="padding:2px" ng-show="contatos.length">
+<!--<button class="btn btn-primary" ng-click="incrementa()"> Novo contato </button>&nbsp;-->
+<a ng-href="#/contato" class="btn btn-primary"> Novo Contato </a>&nbsp;
+<input ng-model="filtro" type="search" placeholder="pesquisar..">&nbsp;
+Contatos cadastrados: {{contatos.length}}
+</p>
+
+<div class="table-responsive" align="center">
+	<br>
+	<table class="table table-hover" width="60%" align="center">
+		<tr>
+			<th width="30%"> NOME </th>
+			<th width="30%"> E-MAIL </th>
+			<th width="30%"> Emergência </th>
+			<th width="10%" class="text-center"> Ação </th>
+		</tr>
+		<tr ng-repeat="contato in contatos | filter: filtro" >
+			<td><a ng-href= "#/contato/{{contato._id}}" > {{contato.nome}} </a> </td>
+			<td> {{contato.email}} </td>
+			<td> {{contato.emergencia.nome}} ({{contato.emergencia.email}}) </td>
+			<td class="text-center" width="10%" valign="middle">
+				<button ng-click="remove(contato)" class="btn btn-warning btn-sm" > Remover </button>
+			</td>
+		</tr>
+		
+		<tr ng-hide="contatos.length">
+			<td colspan="3" align="center">
+				<p class="text-info"> Não há contatos cadastrados </p>
+			</td>
+		</tr>
+	</table>
+	<div width="100%" align="right">
+	<span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+	<span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>
+	<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+	<span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+	</div>
+</div>

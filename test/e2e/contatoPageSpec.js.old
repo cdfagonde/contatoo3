@@ -1,0 +1,49 @@
+// test/e2e/contatoPageSpec.js
+
+
+describe( 'Cadastro de contatos', function() {
+
+	beforeEach( function() {
+		browser.get( 'http://localhost:3000/#/contato' );
+	});
+
+	it( 'Deve cadastrar um contato', function() {
+		var v_aleatorio = Math.floor(( Math.random() * 10000000 ) + 1 );
+		var v_nome = 'teste' + v_aleatorio;
+		var v_email = 'teste@email' + v_aleatorio;
+
+		// Preenchemos nome e e-mail com os valores recem gerados.
+		// CDFagonde: por algum motivo, o by.model somente funcionou após o uso do by.id.
+		element( by.id( 'nome' )).sendKeys( v_nome );
+		// element( by.model( 'contato.nome' )).sendKeys( v_nome );
+		//
+		// element( by.id( 'email' )).sendKeys( v_email );
+		element( by.model( 'contato.email' )).sendKeys( v_email );
+		// 
+		element( by.css( 'option[value="0"]' )).click();   // Escolhemos um contato de emergencia
+		element( by.css( '.btn-primary' )).click();  // Clicamos para salvar
+
+		// Se pintar o texto 'sucesso' em mensagem.texto é porque a gravação foi ok
+		expect( element( by.binding( 'mensagem.texto' )).getText()).toContain( 'sucesso' );
+	});
+
+
+	it( 'Deve remover um contato da lista', function() {
+		// by repeater é coisa do protractor
+		var totalAntes = element.all( by.repeater( 'contato in contatos' )).count();
+		console.log("Antes " + totalAntes);
+
+		// Vou escolher o primeiro da lista, considerando somente teste*
+		// element( by.repeaterContainingText('contato in contatos','teste')).row(0))
+		element( by.repeater( 'contato in contatos' ).row(0))
+		.element( by.css( '.btn' ))
+		.click();
+
+  		var totalDepois = element.all( by.repeater( 'contato in contatos' )).count();
+		console.log("Depois " + totalDepois);
+
+		// Se a exclusão funcionou, a quantidade tem que diminuir
+		expect( totalDepois ).toBeLessThan( totalAntes );
+	});
+
+});
