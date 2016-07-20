@@ -1,5 +1,7 @@
 // config/protractor.js
 
+var config = require( './config' )();
+
 exports.config = {
 	specs : [
 		'../test/e2e/**/*.js'
@@ -14,8 +16,8 @@ exports.config = {
 			// Provocamos o click no link
 			browser.driver.findElement( by.id( 'entrar' )).click();
 			// Preenchemos mail e senha
-			browser.driver.findElement( by.id( 'login_field' )).sendKeys( 'cdfagonde@hotmail.com' );
-			browser.driver.findElement( by.id( 'password' )).sendKeys( 'D@niel1969' );
+			browser.driver.findElement( by.id( 'login_field' )).sendKeys( config.seleniumUser );
+			browser.driver.findElement( by.id( 'password' )).sendKeys( config.seleniumUserPassword );
 			// Botão com o submit
 			browser.driver.findElement( by.name( 'commit' )).click();
 		});
