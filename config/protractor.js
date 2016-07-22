@@ -1,6 +1,7 @@
 // config/protractor.js
 
 var config = require( './config' )();
+var ptor;
 
 exports.config = {
 	sauceUser : config.sauceUser,
@@ -20,6 +21,8 @@ exports.config = {
 	directConnect: true,
 
 	onPrepare : function() {
+
+    	browser.ignoreSynchronization = true;  // <-- to proceed beyond splash screen
 		browser.driver.get( 'http://localhost:3000' )
 		.then( function() {
 			// Provocamos o click no link
