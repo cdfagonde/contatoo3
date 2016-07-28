@@ -1,6 +1,6 @@
 // public/js/main.js
 
-angular.module( 'contatoo2', [ 'ngRoute', 'ngResource' ])
+angular.module( 'contatoo2', [ 'ngRoute', 'ngResource', 'meusComponentes' ])
 .config( function( $routeProvider , $httpProvider ) {
 
 	$httpProvider.interceptors.push( 'meuInterceptor' );

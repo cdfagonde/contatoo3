@@ -23,6 +23,10 @@ angular.module( 'contatoo2' ).controller( 'ContatoController',
 				$scope.mensagem = { texto: 'Salvo com sucesso' };
 				// limpa o formulário
 				$scope.contato = new Contato();
+				// Vamos mudar isto, para não usar o $watch
+				// // novidade entra aqui, última linha da função!
+				// $scope.btnBackFocus = true;
+				$scope.$broadcast( 'contatoSalvo' );
 			})
 			.catch( function( erro ) {
 				$scope.mensagem = { texto: 'Não foi possível salvar' };

@@ -37,6 +37,14 @@
 
 	<div>
 		<button type="submit" class="btn btn-primary"> Salvar </button>
-		<a href="#/" class="btn btn-default"> Voltar </a>
+		<!-- Alteração para o $watch.
+		<a href="#/" class="btn btn-default"> Voltar </a> -->
+		<!-- Alteração para trocar o $watch pelo evento $broadcast.
+		<a id="botao-voltar" meu-focus focus="btnBackFocus" href="#/" class="btn btn-default">
+			Voltar
+		</a> -->
+		<a id="botao-voltar" meu-focus evento="contatoSalvo" href="#/" class="btn btn-default">
+			Voltar
+		</a>
 	</div>
 </form>
