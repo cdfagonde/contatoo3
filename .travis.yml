@@ -22,6 +22,7 @@ before_install:
  - npm install -g karma-cli@0.0
  - npm install -g protractor@1.5
  - webdriver-manager update
+ - npm install -g protractor
  - bower install
 
 before_script:
