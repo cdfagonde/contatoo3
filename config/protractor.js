@@ -17,10 +17,6 @@ exports.config = {
 		'../test/e2e/**/*.js'
 	],
 
-	// seleniumAddress: 'http://localhost:4444/wd/hub',
-	// chromeOnly: true,
-	// directConnect: true,
-
 	onPrepare : function() {
 
     	browser.ignoreSynchronization = true;  // <-- to proceed beyond splash screen
