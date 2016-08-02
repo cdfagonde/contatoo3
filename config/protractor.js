@@ -18,7 +18,6 @@ exports.config = {
 	],
 
 	onPrepare : function() {
-
     	browser.ignoreSynchronization = true;  // <-- to proceed beyond splash screen
 		browser.driver.get( 'http://localhost:' + config.port )
 		.then( function() {
