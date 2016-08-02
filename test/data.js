@@ -20,11 +20,11 @@ MongoClient.connect( 'mongodb://localhost:27017/contatoo2_test',
 		if ( erro ) throw err;
 		db.dropDatabase( function( err ) {
 			if ( err ) return console.log( err );
-			console.log( 'Banco apagado com sucesso' );
+			console.log( 'Banco apagado com sucesso.' );
 			db.collection( 'contatos' ).insert( contatos,
 				function ( err, inserted ) {
 					if ( err ) return console.log( err );
-					console.log( 'Banco populado com sucesso' );
+					console.log( 'Banco populado com sucesso.' );
 					process.exit( 0 );
 				});
 		});
