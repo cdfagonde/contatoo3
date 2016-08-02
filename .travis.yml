@@ -31,6 +31,6 @@ before_script:
 
 script:
  - karma start config/karma.config.js --single-run --browsers PhantomJS
- - node server &
+ - node server
  - webdriver-manager start
  - travis_wait protractor config/protractor.js
