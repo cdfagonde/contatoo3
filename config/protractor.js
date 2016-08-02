@@ -19,8 +19,8 @@ exports.config = {
 		'../test/e2e/**/*.js'
 	],
 
-	chromeOnly: true,
-	directConnect: true,
+	// chromeOnly: true,
+	// directConnect: true,
 
 	onPrepare : function() {
 
