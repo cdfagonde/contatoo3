@@ -20,7 +20,7 @@ exports.config = {
 	onPrepare : function() {
 
     	browser.ignoreSynchronization = true;  // <-- to proceed beyond splash screen
-		browser.driver.get( 'http://localhost:3000' )
+		browser.driver.get( 'http://localhost:' + config.port )
 		.then( function() {
 			// Provocamos o click no link
 			browser.driver.findElement( by.id( 'entrar' )).click();
