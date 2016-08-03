@@ -32,5 +32,6 @@ before_script:
 script:
  - node server &
  - webdriver-manager start --standalone &
+ - sleep 2 # give it some time to start
  - karma start config/karma.config.js --single-run --browsers PhantomJS
  - protractor config/protractor.js
