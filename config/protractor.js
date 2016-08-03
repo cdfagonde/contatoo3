@@ -18,16 +18,14 @@ exports.config = {
 	],
 
 	onPrepare : function() {
-    	browser.ignoreSynchronization = true;  // <-- to proceed beyond splash screen
+    	browser.ignoreSynchronization = false;
 		browser.driver.get( 'http://localhost:3000' )   //  + config.port )
 		.then( function() {
-			// Provocamos o click no link
-			browser.driver.findElement( by.id( 'entrar' )).click();
+			browser.driver.findElement( by.id( 'entrar' )).click(); // Provocamos o click no link
 			// Preenchemos mail e senha
 			browser.driver.findElement( by.id( 'login_field' )).sendKeys( config.seleniumUser );
 			browser.driver.findElement( by.id( 'password' )).sendKeys( config.seleniumUserPassword );
-			// Botão com o submit
-			browser.driver.findElement( by.name( 'commit' )).click();
+			browser.driver.findElement( by.name( 'commit' )).click(); // Botão com o submit
 		});
 	}
 };
