@@ -3,7 +3,10 @@ language: node_js
 node_js: 
  - 0.10
 
-notifications:
+jdk:
+ - oraclejdk7
+
+ notifications:
  - cdfagonde@hotmail.com
 
 services:
