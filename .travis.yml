@@ -6,7 +6,7 @@ node_js:
 jdk:
  - oraclejdk7
 
- notifications:
+notifications:
  - cdfagonde@hotmail.com
 
 services:
