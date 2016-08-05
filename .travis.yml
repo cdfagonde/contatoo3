@@ -13,9 +13,6 @@ env:
  global:
   - NODE_ENV: test
 
-addons:
- sauce_connect: true
-
 before_install:
  - npm install -g bower@1.3
  - npm install -g grunt-cli@0.1
