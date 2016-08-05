@@ -29,4 +29,5 @@ before_script:
 script:
  - node server &
  - karma start config/karma.config.js --single-run --browsers PhantomJS
+ - webdriver-manager start &
  - protractor config/protractor.js
