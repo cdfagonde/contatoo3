@@ -15,7 +15,7 @@ var contatos = [
 ];
 
 // MongoClient.connect( 'mongodb://127.0.0.1:27017/contatoo2_test',
-MongoClient.connect( 'mongodb://localhost:27017/contatoo2_test',
+MongoClient.connect( 'mongodb://localhost/contatoo2_test',
 	function( erro, db ) {
 		if ( erro ) throw err;
 		db.dropDatabase( function( err ) {
