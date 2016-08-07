@@ -13,6 +13,9 @@ env:
  global:
   - NODE_ENV: test
 
+addons:
+ sauce_connect: true
+
 before_install:
  - npm install -g bower@1.3
  - npm install -g grunt-cli@0.1
@@ -27,7 +30,6 @@ before_script:
  - cd dist
 
 script:
- - node server &
  - karma start config/karma.config.js --single-run --browsers PhantomJS
- - webdriver-manager start &
+ - node server &
  - protractor config/protractor.js
