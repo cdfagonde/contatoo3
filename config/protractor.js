@@ -19,8 +19,8 @@ exports.config = {
 
 	onPrepare : function() {
     	browser.ignoreSynchronization = false;
-		// browser.driver.get( 'http://localhost:3000/#/auth' )
-		browser.driver.get( 'http://localhost:3000' )   //  + config.port )
+		// browser.driver.get( 'http://localhost:3000' )   //  + config.port )
+		browser.driver.get( 'http://localhost:3000/#/auth' )
 		.then( function() {
 			browser.driver.findElement( by.id( 'entrar' )).click(); // Provocamos o click no link
 			// Preenchemos mail e senha
