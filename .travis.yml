@@ -1,35 +1,41 @@
 language: node_js
-
-node_js: 
- - 0.10
-
+node_js:
+- 0.1
 notifications:
- - cdfagonde@hotmail.com
-
+- cdfagonde@hotmail.com
 services:
- - mongodb
-
+- mongodb
 env:
- global:
+  global:
   - NODE_ENV: test
-
 addons:
- sauce_connect: true
-
+  sauce_connect: true
 before_install:
- - npm install -g bower@1.3
- - npm install -g grunt-cli@0.1
- - npm install -g karma-cli@0.0
- - npm install -g protractor@1.5
- - webdriver-manager update
- - bower install
-
+- npm install -g bower@1.3
+- npm install -g grunt-cli@0.1
+- npm install -g karma-cli@0.0
+- npm install -g protractor@1.5
+- webdriver-manager update
+- bower install
 before_script:
- - node test/data.js
- - grunt
- - cd dist
-
+- node test/data.js
+- grunt minifica
 script:
- - karma start config/karma.config.js --single-run --browsers PhantomJS
- - node server &
- - protractor config/protractor.js
+- karma start config/karma.config.js --single-run --browsers PhantomJS
+- node server &
+- protractor config/protractor.js
+before_deploy:
+- git config --global user.email 'travis@travis-ci.com'
+- git config --global user.name 'Travis CI'
+- git checkout $TRAVIS_BRANCH
+- git add --all
+- git commit -am "Travis commit"
+deploy:
+  provider: openshift
+  user: cdfagonde@hotmail.com
+  password:
+    secure: VfYJLiO9RsWgCm0VRAWNqTjaUhG8L+HQZExxPHadOJ6daK77BWCcrcfSEZHg1Pu6jlBdaejAIf16HUS/iNcJSfmc2xnRJCD36Du2EbADkxH2cmZV6W7bxogz1CPFDbv9zZONbDo5PSSK0ED6WVePo3+AwYKdYtMOzRfu8r+3n/4Dh31zA9nlcqrG6Qx4MgEl2Fpe5/g7tf/A6pRi3qm97UR8ByjyC+GJ5GrYTVvh+8V8orzg3rngdWZ1gLrzbRWfVaPMDwqtEU7M/MnN+blJCGDla06+1TONziJzhHYZQzHjExC5/MAxk0iXf3amdKv11DaGgIw56UAB4hL0GM98IbMFVd4NgfuBvpJbg70za1/01uPktS0MCuOkIrFxXeHmZ3Vunw1VlyyhOMoN3ol12ZAewzglycnd0A/56NGt43L6ay3CJBILJAYkM2ftG3qSxhZwLC4X7SKT/8NiuIryMsaWhLDpW3hVGvdqRYPE0zJMweKqX8sz81389XstX8lIX+a4CGUCv1kZ7g3Z8x225DmGwL4qWOF/FavXFSinOy0+z9K4jhWO7Ngd4EpgvFk7KmcqtsKZoJeazpORe7nXEP8umlADe1boWWVpepRGRrP6+P+urukXvNmC0Ibd2fw3assXGW87V4/f/GDqb1RF3NznTZXUsGu/l8dLyXKJHf4=
+  app: contatoo2
+  domain: contatoo2-cdfagonde.rhcloud.com
+  on:
+    repo: cdfagonde/contatoo2
