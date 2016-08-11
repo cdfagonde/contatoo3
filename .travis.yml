@@ -38,6 +38,7 @@ before_deploy:
 - git checkout $TRAVIS_BRANCH
 - git add --all
 - git commit -am "Travis commit"
+- git push
 
 deploy:
   provider: openshift
