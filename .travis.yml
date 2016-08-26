@@ -30,7 +30,6 @@ before_deploy:
 - git checkout $TRAVIS_BRANCH
 - git add --all
 - git commit -am "Travis commit"
-
 deploy:
   provider: openshift
   user: cdfagonde@hotmail.com
